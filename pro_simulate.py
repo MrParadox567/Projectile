@@ -27,17 +27,18 @@ class Pro_Simulate(Main_file.Projectile):
         tk.mainloop()
 
     def simulate(self):
-        theta = math.radians(float(self.angle.get()))
-        u = float(self.initial_vel.get())
+        self.theta = math.radians(float(self.angle.get()))
+        self.u = float(self.initial_vel.get())
 
-        g = 9.8
+        self.g = 9.8
 
         turtle.bgcolor("RoyalBlue1")
         turtle.pencolor("aquamarine")
         turtle.speed(5)
+        self.Range = (self.u**2)*(math.sin(self.theta*2))/self.g
 
-        for t in range((u**2)*math.sin(2*theta)/g):
-            turtle.goto(t*math.tan(theta)-(1/2)*g*(t**2)*((1/(math.cos(theta)))**2)*(1/(u**2)),t)
+        for t in range(self.Range):
+            turtle.goto(t,t*math.tan(self.theta) - (0.5)*(self.g)*(t**2)*(1/(math.cos(self.theta)**2))*(self.u**2))
 
 
 
